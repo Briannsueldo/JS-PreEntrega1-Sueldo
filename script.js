@@ -30,6 +30,7 @@ let adivinarNumero = function (vidas) {
         if (intentos === numeroRandom) {
             alert(`Acertaste en ${contadorIntentos} intentos, la probabilidad de esto es ${probabilidad}!`);
             continuarJuego();
+            break;
 
         } else if (intentos < numeroRandom) {
             alert("El numero es mayor");

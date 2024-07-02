@@ -1,11 +1,16 @@
 
 let verificacion = function () {
 
-    const vidas = parseInt(prompt("Con cuantas vidas quieres jugar? (menos de 25) : "));
+    let vidas = parseInt(prompt("Con cuantas vidas quieres jugar? (menos de 25) : "));
 
-    if (vidas >= 25) {
+    if (isNaN(vidas)) {
 
-        alert("Elija una cantidad menor de intentos")
+        alert("Elija una numero valido")
+
+        return verificacion();
+    } else if (vidas >= 25) {
+        
+        alert("Elija un numero menor de intentos");
 
         return verificacion();
     } else {
@@ -26,20 +31,22 @@ let adivinarNumero = function (vidas) {
         let intentos = parseInt(prompt("Cual es el numero random? : "));
 
         let probabilidad = (((1 - ((99/100) ** contadorIntentos))) * 100).toFixed(2)
-
-        if (intentos === numeroRandom) {
-            alert(`Acertaste en ${contadorIntentos} intentos, la probabilidad de esto es ${probabilidad}!`);
-            continuarJuego();
-            break;
+        
+        if (isNaN(intentos)) {
+            alert("introduzca un valor valido");
+            contadorIntentos--;
+            intentos;
 
         } else if (intentos < numeroRandom) {
             alert("El numero es mayor");
             intentos;
-        
-        } else {
+        } else if (intentos > numeroRandom) {
             alert("El numero es menor");
             intentos;
-
+        } else {
+            alert(`Acertaste en ${contadorIntentos} intentos, la probabilidad de esto es ${probabilidad}!`);
+            continuarJuego();
+            break;
         }
     }
 
